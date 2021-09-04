@@ -4,3 +4,6 @@
 [submodule "sqlite"]
 	path = depends/sqlite
 	url = https://github.com/djp952/external-sqlite.git
+[submodule "zlib"]
+	path = depends/zlib
+	url = https://github.com/madler/zlib.git
