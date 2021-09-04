@@ -1,0 +1,6 @@
+[submodule "build"]
+	path = depends/build
+	url = https://github.com/djp952/build.git
+[submodule "sqlite"]
+	path = depends/sqlite
+	url = https://github.com/djp952/external-sqlite.git
