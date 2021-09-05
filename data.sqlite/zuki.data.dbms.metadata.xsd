@@ -1,0 +1,87 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="metadata" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="metadata" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MetaDataCollections">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CollectionName" type="xs:string" minOccurs="0" />
+              <xs:element name="NumberOfRestrictions" type="xs:int" minOccurs="0" />
+              <xs:element name="NumberOfIdentifierParts" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataSourceInformation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CompositeIdentifierSeparatorPattern" type="xs:string" minOccurs="0" />
+              <xs:element name="DataSourceProductName" type="xs:string" minOccurs="0" />
+              <xs:element name="DataSourceProductVersion" type="xs:string" minOccurs="0" />
+              <xs:element name="DataSourceProductVersionNormalized" type="xs:string" minOccurs="0" />
+              <xs:element name="GroupByBehavior" msdata:DataType="System.Data.Common.GroupByBehavior, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="IdentifierPattern" type="xs:string" minOccurs="0" />
+              <xs:element name="IdentifierCase" msdata:DataType="System.Data.Common.IdentifierCase, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="OrderByColumnsInSelect" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ParameterMarkerFormat" type="xs:string" minOccurs="0" />
+              <xs:element name="ParameterMarkerPattern" type="xs:string" minOccurs="0" />
+              <xs:element name="ParameterNameMaxLength" type="xs:int" minOccurs="0" />
+              <xs:element name="ParameterNamePattern" type="xs:string" minOccurs="0" />
+              <xs:element name="QuotedIdentifierPattern" type="xs:string" minOccurs="0" />
+              <xs:element name="QuotedIdentifierCase" msdata:DataType="System.Data.Common.IdentifierCase, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="StatementSeparatorPattern" type="xs:string" minOccurs="0" />
+              <xs:element name="StringLiteralPattern" type="xs:string" minOccurs="0" />
+              <xs:element name="SupportedJoinOperators" msdata:DataType="System.Data.Common.SupportedJoinOperators, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTypes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TypeName" type="xs:string" minOccurs="0" />
+              <xs:element name="ProviderDbType" type="xs:int" minOccurs="0" />
+              <xs:element name="ColumnSize" type="xs:long" minOccurs="0" />
+              <xs:element name="CreateFormat" type="xs:string" minOccurs="0" />
+              <xs:element name="CreateParameters" type="xs:string" minOccurs="0" />
+              <xs:element name="DataType" type="xs:string" minOccurs="0" />
+              <xs:element name="IsAutoIncrementable" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsBestMatch" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsCaseSensitive" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsFixedLength" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsFixedPrecisionScale" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsLong" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsNullable" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsSearchable" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsSearchableWithLike" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsUnsigned" type="xs:boolean" minOccurs="0" />
+              <xs:element name="MaximumScale" type="xs:short" minOccurs="0" />
+              <xs:element name="MinimumScale" type="xs:short" minOccurs="0" />
+              <xs:element name="IsConcurrencyType" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsLiteralSupported" type="xs:boolean" minOccurs="0" />
+              <xs:element name="LiteralPrefix" type="xs:string" minOccurs="0" />
+              <xs:element name="LiteralSuffix" type="xs:string" minOccurs="0" />
+              <xs:element name="NativeDataType" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Restrictions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CollectionName" type="xs:string" minOccurs="0" />
+              <xs:element name="RestrictionName" type="xs:string" minOccurs="0" />
+              <xs:element name="RestrictionDefault" type="xs:string" minOccurs="0" />
+              <xs:element name="RestrictionNumber" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReservedWords">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReservedWord" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
