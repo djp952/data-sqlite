@@ -11,23 +11,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{62E9319E-82CB-404C-B714-F9B311A321EE}</ProjectGuid>
-    <RootNamespace>zuki.data.sqlite.version</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{4FF021EF-8374-4FB7-8D58-476FDF23E5C3}</ProjectGuid>
+    <RootNamespace>version</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -42,14 +42,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)..\out\windows-$(Platform)\$(Configuration)\</OutDir>
     <TargetName>$(RootNamespace)</TargetName>
-    <IntDir>$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>obj\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)..\out\windows-$(Platform)\$(Configuration)\</OutDir>
     <TargetName>$(RootNamespace)</TargetName>
-    <IntDir>$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>obj\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -74,22 +74,22 @@
   <ItemGroup>
     <CustomBuild Include="version.ini">
       <FileType>Text</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(ProjectDir)..\depends\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)..\tmp\version" "-ini:%(FullPath)" -format:cpp,rc,txt</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)..\tmp\version\version.cpp;$(ProjectDir)..\tmp\version\version.rc;$(ProjectDir)..\tmp\version\version.txt;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(ProjectDir)..\depends\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)..\tmp\version" "-ini:%(FullPath)" -format:cpp,rc,txt</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)..\tmp\version\version.cpp;$(ProjectDir)..\tmp\version\version.rc;$(ProjectDir)..\tmp\version\version.txt;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(ProjectDir)..\..\depends\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)..\..\tmp\version" "-ini:%(FullPath)" -format:cpp,rc,txt</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)..\..\tmp\version\version.cpp;$(ProjectDir)..\..\tmp\version\version.rc;$(ProjectDir)..\..\tmp\version\version.txt;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(ProjectDir)..\..\depends\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)..\..\tmp\version" "-ini:%(FullPath)" -format:cpp,rc,txt</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)..\..\tmp\version\version.cpp;$(ProjectDir)..\..\tmp\version\version.rc;$(ProjectDir)..\..\tmp\version\version.txt;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating version files</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating version files</Message>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\tmp\version\version.rc" />
+    <ClCompile Include="..\..\tmp\version\version.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\tmp\version\version.txt" />
+    <ResourceCompile Include="..\..\tmp\version\version.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\tmp\version\version.cpp" />
+    <Text Include="..\..\tmp\version\version.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

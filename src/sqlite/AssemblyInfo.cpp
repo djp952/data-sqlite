@@ -33,8 +33,8 @@ using namespace System::Security::Permissions;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly:AssemblyTitleAttribute("zuki.data.dbms")];
-[assembly:AssemblyDescriptionAttribute("zuki.data.dbms")];
+[assembly:AssemblyTitleAttribute("zuki.data.sqlite")];
+[assembly:AssemblyDescriptionAttribute("zuki.data.sqlite")];
 
 [assembly:ComVisible(false)];
 [assembly:CLSCompliantAttribute(true)];

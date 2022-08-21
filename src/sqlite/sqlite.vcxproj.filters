@@ -165,41 +165,41 @@
     <ClCompile Include="zDBVirtualTableModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\zlib\adler32.c">
+    <ClCompile Include="..\..\depends\zlib\adler32.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\zlib\compress.c">
+    <ClCompile Include="..\..\depends\zlib\compress.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\zlib\deflate.c">
+    <ClCompile Include="..\..\depends\zlib\deflate.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\zlib\inffast.c">
+    <ClCompile Include="..\..\depends\zlib\inffast.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\zlib\inflate.c">
+    <ClCompile Include="..\..\depends\zlib\inflate.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\zlib\inftrees.c">
+    <ClCompile Include="..\..\depends\zlib\inftrees.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\zlib\trees.c">
+    <ClCompile Include="..\..\depends\zlib\trees.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\zlib\uncompr.c">
+    <ClCompile Include="..\..\depends\zlib\uncompr.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\zlib\zutil.c">
+    <ClCompile Include="..\..\depends\zlib\zutil.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\depends\sqlite\sqlite3.c">
+    <ClCompile Include="..\..\depends\sqlite\sqlite3.c">
       <Filter>External Libraries\sqlite\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\tmp\version\version.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\depends\zlib\crc32.c">
+    <ClCompile Include="..\..\depends\zlib\crc32.c">
       <Filter>External Libraries\zlib\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tmp\version\version.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -413,16 +413,16 @@
     <ClInclude Include="zlibException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\depends\zlib\zconf.h">
+    <ClInclude Include="..\..\depends\zlib\zconf.h">
       <Filter>External Libraries\zlib\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\depends\zlib\zlib.h">
+    <ClInclude Include="..\..\depends\zlib\zlib.h">
       <Filter>External Libraries\zlib\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\depends\sqlite\sqlite3.h">
+    <ClInclude Include="..\..\depends\sqlite\sqlite3.h">
       <Filter>External Libraries\sqlite\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\depends\sqlite\sqlite3ext.h">
+    <ClInclude Include="..\..\depends\sqlite\sqlite3ext.h">
       <Filter>External Libraries\sqlite\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -437,7 +437,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\tmp\version\version.rc">
+    <ResourceCompile Include="..\..\tmp\version\version.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
