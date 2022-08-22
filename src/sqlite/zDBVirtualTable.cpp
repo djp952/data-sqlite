@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// Copyright (c) 2008-2021 Michael G. Brehm
+// Copyright (c) 2008-2022 Michael G. Brehm
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,9 +27,7 @@
 #pragma warning(push, 4)			// Enable maximum compiler warnings
 #pragma warning(disable:4100)		// "unreferenced formal parameter"
 
-BEGIN_NAMESPACE(zuki)
-BEGIN_NAMESPACE(data)
-BEGIN_NAMESPACE(dbms)
+namespace zuki::data::sqlite {
 
 //---------------------------------------------------------------------------
 // zDBVirtualTable Constructor (protected)
@@ -276,8 +274,6 @@ String^ zDBVirtualTable<_cursor>::TableName::get(void)
 
 //---------------------------------------------------------------------------
 
-END_NAMESPACE(dbms)
-END_NAMESPACE(data)
-END_NAMESPACE(zuki)
+} // zuki::data::sqlite
 
 #pragma warning(pop)

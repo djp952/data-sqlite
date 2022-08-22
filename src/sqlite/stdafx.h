@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// Copyright (c) 2008-2021 Michael G. Brehm
+// Copyright (c) 2008-2022 Michael G. Brehm
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,8 @@
 // CRT / Win32 Declarations
 //---------------------------------------------------------------------------
 
-#define	_WIN32_WINNT		0x0500			// Windows 2000
-#define	_WIN32_IE			0x0500			// IE 5.0 / ShellAPI 5.0
+#define WINVER				0x0601			// Windows 7
+#define	_WIN32_WINNT		0x0601			// Windows 7
 
 #include <windows.h>		// Include base Win32 declarations
 #include <vcclr.h>			// Include VC CLR extensions
@@ -40,13 +40,6 @@
 //---------------------------------------------------------------------------
 // Macros
 //---------------------------------------------------------------------------
-
-// BEGIN_NAMESPACE / END_NAMESPACE
-//
-// Used to assist in namespace declarations
-
-#define BEGIN_NAMESPACE(__x) namespace __x {
-#define END_NAMESPACE(__x) }
 
 // CHECK_DISPOSED
 //

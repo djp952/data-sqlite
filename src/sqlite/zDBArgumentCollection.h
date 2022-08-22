@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// Copyright (c) 2008-2021 Michael G. Brehm
+// Copyright (c) 2008-2022 Michael G. Brehm
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,9 +32,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace System::Collections::ObjectModel;
 
-BEGIN_NAMESPACE(zuki)
-BEGIN_NAMESPACE(data)
-BEGIN_NAMESPACE(dbms)
+namespace zuki::data::sqlite {
 
 //---------------------------------------------------------------------------
 // Class zDBArgumentCollection
@@ -80,9 +78,7 @@ private:
 
 //---------------------------------------------------------------------------
 
-END_NAMESPACE(dbms)
-END_NAMESPACE(data)
-END_NAMESPACE(zuki)
+} // zuki::data::sqlite
 
 #pragma warning(pop)
 
