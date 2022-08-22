@@ -66,8 +66,7 @@ struct FunctionMapKey
 // Used as the "less" binary function for STL collections
 //---------------------------------------------------------------------------
 
-struct FunctionMapKeyComparer : 
-	public std::binary_function<const FunctionMapKey&, const FunctionMapKey&, bool>
+struct FunctionMapKeyComparer
 {
 	bool operator ()(const FunctionMapKey& lhs, const FunctionMapKey& rhs) const 
 	{
