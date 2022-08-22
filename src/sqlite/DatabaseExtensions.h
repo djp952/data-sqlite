@@ -25,10 +25,10 @@
 #pragma once
 
 #include "AutoAnsiString.h"				// Include AutoAnsiString declarations
-#include "zDBArgument.h"				// Include zDBArgument declarations
-#include "zDBBinaryStream.h"			// Include zDBBinaryStream declarations
-#include "zDBEnumerations.h"			// Include zDB enumeration decls
-#include "zDBException.h"				// Include zDBException declarations
+#include "SqliteArgument.h"				// Include SqliteArgument declarations
+#include "SqliteBinaryStream.h"			// Include SqliteBinaryStream declarations
+#include "SqliteEnumerations.h"			// Include Sqlite enumeration decls
+#include "SqliteException.h"				// Include SqliteException declarations
 #include "zlibException.h"				// Include zlibException declarations
 
 using namespace System;
@@ -60,7 +60,7 @@ public:
 	// Register
 	//
 	// Registers the database extensions with SQLite.  Only necessary to be
-	// done once -- see zDBConnection's static constructor
+	// done once -- see SqliteConnection's static constructor
 	static void Register(void);
 
 private:

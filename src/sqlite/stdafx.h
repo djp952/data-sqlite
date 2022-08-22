@@ -99,25 +99,25 @@ struct sqlite3_value {};
 // Project-Wide #defines
 //---------------------------------------------------------------------------
 
-// ZDB_TRACE_HANDLEREF
+// SQLITE_TRACE_HANDLEREF
 //
 // Monitors the reference counted SQLite handle AddRef() and Release()
 #ifdef _DEBUG
-#define ZDB_TRACE_HANDLEREF
+#define SQLITE_TRACE_HANDLEREF
 #endif
 
-// ZDB_TRACE_CONNECTIONHOOKS
+// sqlite_TRACE_CONNECTIONHOOKS
 //
-// Monitors the zDBConnectionHook install/uninstalls
+// Monitors the SqliteConnectionHook install/uninstalls
 #ifdef _DEBUG
-#define ZDB_TRACE_CONNECTIONHOOKS
+#define sqlite_TRACE_CONNECTIONHOOKS
 #endif
 
-// ZDB_TRACE_FUNCTIONS
+// sqlite_TRACE_FUNCTIONS
 //
-// Monitors the activity of the zDBAggregate/Function/Collation collections
+// Monitors the activity of the SqliteAggregate/Function/Collation collections
 #ifdef _DEBUG
-#define ZDB_TRACE_FUNCTIONS
+#define sqlite_TRACE_FUNCTIONS
 #endif
 
 //---------------------------------------------------------------------------

@@ -41,7 +41,7 @@ StatementHandle::StatementHandle(Object^ caller, DatabaseHandle* pDatabase, sqli
 	if(!m_pDatabase) throw gcnew ArgumentNullException();
 	if(!m_hStatement) throw gcnew ArgumentNullException();
 
-#ifdef ZDB_TRACE_HANDLEREF
+#ifdef SQLITE_TRACE_HANDLEREF
 	Debug::WriteLine(String::Format("StatementHandle 0x{0:X}:{1:X} ---> 1 (NEW via {2})", 
 		IntPtr(m_pDatabase), IntPtr(this),
 		caller->GetType()->Name));
@@ -58,9 +58,9 @@ StatementHandle::~StatementHandle()
 	try {
 	
 		int nResult = sqlite3_finalize(m_hStatement);	
-		if(nResult != SQLITE_OK) {} /* TODO (REMOVED): throw gcnew zDBException(m_pDatabase->Handle, nResult); */
+		if(nResult != SQLITE_OK) {} /* TODO (REMOVED): throw gcnew SqliteException(m_pDatabase->Handle, nResult); */
 
-#ifdef ZDB_TRACE_HANDLEREF
+#ifdef SQLITE_TRACE_HANDLEREF
 	Debug::WriteLine(String::Format("StatementHandle 0x{0:X}:{1:X} destroyed.", 
 		IntPtr(m_pDatabase), IntPtr(this)));
 #endif
@@ -81,11 +81,11 @@ StatementHandle::~StatementHandle()
 StatementHandle& StatementHandle::operator =(sqlite3_stmt* hStatement)
 {
 	int nResult = sqlite3_finalize(m_hStatement);
-	if(nResult != SQLITE_OK) throw gcnew zDBException(m_pDatabase->Handle, nResult);
+	if(nResult != SQLITE_OK) throw gcnew SqliteException(m_pDatabase->Handle, nResult);
 
 	m_hStatement = hStatement;				// Switch out the handle
 
-#ifdef ZDB_TRACE_HANDLEREF
+#ifdef SQLITE_TRACE_HANDLEREF
 	Debug::WriteLine(String::Format("StatementHandle 0x{0:X}:{1:X} internal handle replaced.",
 		IntPtr(m_pDatabase), IntPtr(this)));
 #endif
@@ -106,7 +106,7 @@ void StatementHandle::AddRef(Object^ caller)
 {
 	InterlockedIncrement(&m_cRefCount);		// Increment reference count
 
-#ifdef ZDB_TRACE_HANDLEREF
+#ifdef SQLITE_TRACE_HANDLEREF
 	Debug::WriteLine(String::Format("StatementHandle 0x{0:X}:{1:X} ---> {2} ({3})", 
 		IntPtr(m_pDatabase), IntPtr(this),
 		m_cRefCount, caller->GetType()->Name));
@@ -124,7 +124,7 @@ void StatementHandle::AddRef(Object^ caller)
 
 void StatementHandle::Release(Object^ caller)
 {
-#ifdef ZDB_TRACE_HANDLEREF
+#ifdef SQLITE_TRACE_HANDLEREF
 	Debug::WriteLine(String::Format("StatementHandle 0x{0:X}:{1:X} <--- {2} ({3})", 
 		IntPtr(m_pDatabase), IntPtr(this),
 		m_cRefCount - 1, caller->GetType()->Name));

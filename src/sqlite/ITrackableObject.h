@@ -32,7 +32,7 @@ using namespace System;
 // Interface ITrackableObject (internal)
 //
 // Interface that allows certain classes to keep track of other class
-// instance lifetimes.  See zDBConnection and zDBCommand for places that 
+// instance lifetimes.  See SqliteConnection and SqliteCommand for places that 
 // this gets used.
 //---------------------------------------------------------------------------
 

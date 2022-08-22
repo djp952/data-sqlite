@@ -54,115 +54,115 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBAggregateCollection.cpp">
+    <ClCompile Include="SqliteAggregateCollection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBArgument.cpp">
+    <ClCompile Include="SqliteArgument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBBinaryReader.cpp">
+    <ClCompile Include="SqliteBinaryReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBBinaryStream.cpp">
+    <ClCompile Include="SqliteBinaryStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBCollationCollection.cpp">
+    <ClCompile Include="SqliteCollationCollection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBCollationWrapper.cpp">
+    <ClCompile Include="SqliteCollationWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBCommand.cpp">
+    <ClCompile Include="SqliteCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBCommandBuilder.cpp">
+    <ClCompile Include="SqliteCommandBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBConnection.cpp">
+    <ClCompile Include="SqliteConnection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBConnectionHook.cpp">
+    <ClCompile Include="SqliteConnectionHook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBConnectionHooks.cpp">
+    <ClCompile Include="SqliteConnectionHooks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBConnectionStringBuilder.cpp">
+    <ClCompile Include="SqliteConnectionStringBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBCryptoKey.cpp">
+    <ClCompile Include="SqliteCryptoKey.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBDataAdapter.cpp">
+    <ClCompile Include="SqliteDataAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBDataReader.cpp">
+    <ClCompile Include="SqliteDataReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBDataSourceEnumerator.cpp">
+    <ClCompile Include="SqliteDataSourceEnumerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBEventArgs.cpp">
+    <ClCompile Include="SqliteEventArgs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBException.cpp">
+    <ClCompile Include="SqliteException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBExceptions.cpp">
+    <ClCompile Include="SqliteExceptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBFunctionCollection.cpp">
+    <ClCompile Include="SqliteFunctionCollection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBFunctionWrapper.cpp">
+    <ClCompile Include="SqliteFunctionWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBIndexSelectionArgs.cpp">
+    <ClCompile Include="SqliteIndexSelectionArgs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBMetaData.cpp">
+    <ClCompile Include="SqliteMetaData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBParameter.cpp">
+    <ClCompile Include="SqliteParameter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBParameterCollection.cpp">
+    <ClCompile Include="SqliteParameterCollection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBParameterValue.cpp">
+    <ClCompile Include="SqliteParameterValue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBPermissionAttribute.cpp">
+    <ClCompile Include="SqlitePermissionAttribute.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBQuery.cpp">
+    <ClCompile Include="SqliteQuery.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBResult.cpp">
+    <ClCompile Include="SqliteResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBSchemaInfo.cpp">
+    <ClCompile Include="SqliteSchemaInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBStatement.cpp">
+    <ClCompile Include="SqliteStatement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBStatementMetaData.cpp">
+    <ClCompile Include="SqliteStatementMetaData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBTransaction.cpp">
+    <ClCompile Include="SqliteTransaction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBType.cpp">
+    <ClCompile Include="SqliteType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBUtil.cpp">
+    <ClCompile Include="SqliteUtil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBVirtualTable.cpp">
+    <ClCompile Include="SqliteVirtualTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zDBVirtualTableModule.cpp">
+    <ClCompile Include="SqliteVirtualTableModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\depends\zlib\adler32.c">
@@ -242,172 +242,172 @@
     <ClInclude Include="VirtualTableCursor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBAggregate.h">
+    <ClInclude Include="SqliteAggregate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBAggregateCollection.h">
+    <ClInclude Include="SqliteAggregateCollection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBAggregateWrapper.h">
+    <ClInclude Include="SqliteAggregateWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBArgument.h">
+    <ClInclude Include="SqliteArgument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBArgumentCollection.h">
+    <ClInclude Include="SqliteArgumentCollection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBBinaryReader.h">
+    <ClInclude Include="SqliteBinaryReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBBinaryStream.h">
+    <ClInclude Include="SqliteBinaryStream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBCollation.h">
+    <ClInclude Include="SqliteCollation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBCollationCollection.h">
+    <ClInclude Include="SqliteCollationCollection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBCollationWrapper.h">
+    <ClInclude Include="SqliteCollationWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBCommand.h">
+    <ClInclude Include="SqliteCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBCommandBuilder.h">
+    <ClInclude Include="SqliteCommandBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBConnection.h">
+    <ClInclude Include="SqliteConnection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBConnectionHook.h">
+    <ClInclude Include="SqliteConnectionHook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBConnectionHooks.h">
+    <ClInclude Include="SqliteConnectionHooks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBConnectionStringBuilder.h">
+    <ClInclude Include="SqliteConnectionStringBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBConstants.h">
+    <ClInclude Include="SqliteConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBCryptoKey.h">
+    <ClInclude Include="SqliteCryptoKey.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBDataAdapter.h">
+    <ClInclude Include="SqliteDataAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBDataReader.h">
+    <ClInclude Include="SqliteDataReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBDataSourceEnumerator.h">
+    <ClInclude Include="SqliteDataSourceEnumerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBDelegates.h">
+    <ClInclude Include="SqliteDelegates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBEnumerations.h">
+    <ClInclude Include="SqliteEnumerations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBEventArgs.h">
+    <ClInclude Include="SqliteEventArgs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBException.h">
+    <ClInclude Include="SqliteException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBExceptions.h">
+    <ClInclude Include="SqliteExceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBFactory.h">
+    <ClInclude Include="SqliteFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBFunction.h">
+    <ClInclude Include="SqliteFunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBFunctionCollection.h">
+    <ClInclude Include="SqliteFunctionCollection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBFunctionWrapper.h">
+    <ClInclude Include="SqliteFunctionWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBIndexConstraint.h">
+    <ClInclude Include="SqliteIndexConstraint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBIndexIdentifier.h">
+    <ClInclude Include="SqliteIndexIdentifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBIndexSelectionArgs.h">
+    <ClInclude Include="SqliteIndexSelectionArgs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBIndexSortColumn.h">
+    <ClInclude Include="SqliteIndexSortColumn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBMetaData.h">
+    <ClInclude Include="SqliteMetaData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBNonTransactionalVirtualTable.h">
+    <ClInclude Include="SqliteNonTransactionalVirtualTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBParameter.h">
+    <ClInclude Include="SqliteParameter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBParameterCollection.h">
+    <ClInclude Include="SqliteParameterCollection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBParameterValue.h">
+    <ClInclude Include="SqliteParameterValue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBPermission.h">
+    <ClInclude Include="SqlitePermission.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBPermissionAttribute.h">
+    <ClInclude Include="SqlitePermissionAttribute.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBQuery.h">
+    <ClInclude Include="SqliteQuery.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBReadOnlyVirtualTable.h">
+    <ClInclude Include="SqliteReadOnlyVirtualTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBResult.h">
+    <ClInclude Include="SqliteResult.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBSchemaInfo.h">
+    <ClInclude Include="SqliteSchemaInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBStatement.h">
+    <ClInclude Include="SqliteStatement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBStatementMetaData.h">
+    <ClInclude Include="SqliteStatementMetaData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBTemplate.h">
+    <ClInclude Include="SqliteTemplate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBTransaction.h">
+    <ClInclude Include="SqliteTransaction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBType.h">
+    <ClInclude Include="SqliteType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBUtil.h">
+    <ClInclude Include="SqliteUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBVirtualTable.h">
+    <ClInclude Include="SqliteVirtualTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBVirtualTableBase.h">
+    <ClInclude Include="SqliteVirtualTableBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBVirtualTableConstructorArgs.h">
+    <ClInclude Include="SqliteVirtualTableConstructorArgs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBVirtualTableCursor.h">
+    <ClInclude Include="SqliteVirtualTableCursor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zDBVirtualTableModule.h">
+    <ClInclude Include="SqliteVirtualTableModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="zlibException.h">

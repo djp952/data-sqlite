@@ -24,7 +24,7 @@
 #define __VIRTUALTABLE_H_
 #pragma once
 
-#include "zDBVirtualTableBase.h"		// Include zDBVirtualTableBase decls
+#include "SqliteVirtualTableBase.h"		// Include SqliteVirtualTableBase decls
 
 using namespace System;
 using namespace System::Diagnostics;
@@ -37,8 +37,8 @@ using namespace zuki::data::sqlite;
 //
 // VirtualTable extends the standard sqlite3_vtab structure into a full
 // blown (unmanaged) class object.  This extension adds a pointer to the
-// GCHandle of the managed zDBVirtualTable<>, and provides overloads so
-// it can be treated as if it were a managed zDBVirtualTableBase.  Handy.
+// GCHandle of the managed SqliteVirtualTable<>, and provides overloads so
+// it can be treated as if it were a managed SqliteVirtualTableBase.  Handy.
 //---------------------------------------------------------------------------
 
 class VirtualTable : public sqlite3_vtab
@@ -50,16 +50,16 @@ public:
 
 	// Instance
 	operator Object^() const { return GCHandle::FromIntPtr(IntPtr(m_ptr)).Target; }
-	operator zDBVirtualTableBase^() const { return static_cast<zDBVirtualTableBase^>(GCHandle::FromIntPtr(IntPtr(m_ptr)).Target); }
+	operator SqliteVirtualTableBase^() const { return static_cast<SqliteVirtualTableBase^>(GCHandle::FromIntPtr(IntPtr(m_ptr)).Target); }
 	
 	// Pointer-To-Member
-	zDBVirtualTableBase^ operator ->() const { return operator zDBVirtualTableBase^(); }
+	SqliteVirtualTableBase^ operator ->() const { return operator SqliteVirtualTableBase^(); }
 
 	// Equality
-	bool operator ==(zDBVirtualTableBase^ rhs) { return (operator zDBVirtualTableBase^() == rhs); }
+	bool operator ==(SqliteVirtualTableBase^ rhs) { return (operator SqliteVirtualTableBase^() == rhs); }
 
 	// Inequality
-	bool operator !=(zDBVirtualTableBase^ rhs) { return (operator zDBVirtualTableBase^() != rhs); }
+	bool operator !=(SqliteVirtualTableBase^ rhs) { return (operator SqliteVirtualTableBase^() != rhs); }
 
 	//-----------------------------------------------------------------------
 	// Member Functions

@@ -83,8 +83,8 @@ struct FunctionMapKeyComparer
 // Typedef FunctionMap
 //
 // FunctionMap implements an STL map<> of FunctionMapKeys->intptr_t.  This
-// is used as the collection basis in zDBAggregateCollection, zDBCollationCollection
-// and zDBFunctionCollection so that the class finalizers can reliably release
+// is used as the collection basis in SqliteAggregateCollection, SqliteCollationCollection
+// and SqliteFunctionCollection so that the class finalizers can reliably release
 // any serialized GCHandles that still exist
 //---------------------------------------------------------------------------
 

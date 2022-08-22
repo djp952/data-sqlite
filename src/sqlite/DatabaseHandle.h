@@ -24,7 +24,7 @@
 #define __DATABASEHANDLE_H_
 #pragma once
 
-#include "zDBException.h"				// Include zDBException declarations
+#include "SqliteException.h"				// Include SqliteException declarations
 
 using namespace System;
 using namespace System::Diagnostics;
@@ -39,7 +39,7 @@ using namespace zuki::data::sqlite;
 // handle that allows it to be treated like a COM object so we can 
 // deterministically free it properly from managed class finalizers
 //
-// NOTE: Set "ZDB_TRACE_HANDLEREF" to enable Debug monitoring of refcounts
+// NOTE: Set "SQLITE_TRACE_HANDLEREF" to enable Debug monitoring of refcounts
 //---------------------------------------------------------------------------
 
 class DatabaseHandle

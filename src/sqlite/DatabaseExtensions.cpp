@@ -22,7 +22,7 @@
 
 #include "stdafx.h"					// Include project pre-compiled headers
 #include "DatabaseExtensions.h"		// Include DatabaseExtensions declarations
-#include "zDBConnection.h"			// Include zDBConnection declarations
+#include "SqliteConnection.h"			// Include SqliteConnection declarations
 
 #pragma warning(push, 4)			// Enable maximum compiler warnings
 
@@ -40,7 +40,7 @@
 void DatabaseExtensions::BoolFunc(sqlite3_context* context, int argc, sqlite3_value** argv)
 {
 	sqlite3*					hDatabase;		// Parent SQLite database handle
-	gcroot<zDBConnection^>		conn;			// Parent zDBConnection object
+	gcroot<SqliteConnection^>		conn;			// Parent SqliteConnection object
 	bool						value;			// Coerced boolean value
 
 	Debug::Assert(argc == 1);
@@ -50,11 +50,11 @@ void DatabaseExtensions::BoolFunc(sqlite3_context* context, int argc, sqlite3_va
 		if(sqlite3_value_type(argv[0]) == SQLITE_NULL) return sqlite3_result_null(context);
 
 		// The SQLite database handle should have been set as the user data for
-		// this function, which we can then map back into a zDBConnection object
+		// this function, which we can then map back into a SqliteConnection object
 
 		hDatabase = reinterpret_cast<sqlite3*>(sqlite3_user_data(context));
-		conn = zDBConnection::FindConnection(hDatabase);
-		if(static_cast<zDBConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
+		conn = SqliteConnection::FindConnection(hDatabase);
+		if(static_cast<SqliteConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
 
 		value = ValueToBoolean(argv[0]);		// Convert the value into a boolean
 
@@ -63,13 +63,13 @@ void DatabaseExtensions::BoolFunc(sqlite3_context* context, int argc, sqlite3_va
 
 		switch(conn->BooleanFormat) {
 
-			case zDBBooleanFormat::OneZero: 
+			case SqliteBooleanFormat::OneZero: 
 				return sqlite3_result_int(context, (value) ? 1 : 0);
 
-			case zDBBooleanFormat::NegativeOneZero: 
+			case SqliteBooleanFormat::NegativeOneZero: 
 				return sqlite3_result_int(context, (value) ? -1 : 0);
 
-			case zDBBooleanFormat::TrueFalse: 
+			case SqliteBooleanFormat::TrueFalse: 
 				return sqlite3_result_text(context, (value) ? "true" : "false", -1, SQLITE_STATIC);
 		}
 	}
@@ -142,7 +142,7 @@ void DatabaseExtensions::CompressInternal(sqlite3_context* context, sqlite3_valu
 {
 	int						cbInputData;		// Length of the data to compress
 	z_stream				zStream;			// ZLIB stream state structure
-	zDBBinaryStream^		outStream;			// Output zDBBinaryStream object
+	SqliteBinaryStream^		outStream;			// Output SqliteBinaryStream object
 	array<System::Byte>^	rgBuffer;			// Generic byte array reference
 	PinnedBytePtr			pinBuffer;			// Generic pinning array pointer
 	int						cbOutData;			// Length of the output data
@@ -169,7 +169,7 @@ void DatabaseExtensions::CompressInternal(sqlite3_context* context, sqlite3_valu
 		
 		try {
 
-			outStream = gcnew zDBBinaryStream(cbInputData);	// Create the stream
+			outStream = gcnew SqliteBinaryStream(cbInputData);	// Create the stream
 			
 			// Create and append the COMPRESSION_HEADER, and more importantly,
 			// seed the output data length with the size of this header
@@ -200,12 +200,12 @@ void DatabaseExtensions::CompressInternal(sqlite3_context* context, sqlite3_valu
 			
 			} while(zStream.avail_out == 0);
 
-			// Thanks to the handy-dandy zDBBinaryStream class, we can perform a
+			// Thanks to the handy-dandy SqliteBinaryStream class, we can perform a
 			// more efficient callback here that allows SQLite to keep the buffer
 			// around as long as it needs to and access it directly
 
 			cbOutData = outStream->Lock(&pvOutData);
-			sqlite3_result_blob(context, pvOutData, cbOutData, zDBBinaryStream::OnRelease);
+			sqlite3_result_blob(context, pvOutData, cbOutData, SqliteBinaryStream::OnRelease);
 		}
 		
 		finally { deflateEnd(&zStream); }			// Always close the deflater
@@ -257,7 +257,7 @@ array<System::Byte>^ DatabaseExtensions::CreateCompressionHeader(int dataType, u
 void DatabaseExtensions::DateTimeFunc(sqlite3_context* context, int argc, sqlite3_value** argv)
 {
 	sqlite3*					hDatabase;		// Parent SQLite database handle
-	gcroot<zDBConnection^>		conn;			// Parent zDBConnection object
+	gcroot<SqliteConnection^>		conn;			// Parent SqliteConnection object
 	DateTime					value;			// Coerced System.DateTime value
 	
 	Debug::Assert(argc == 1);
@@ -267,11 +267,11 @@ void DatabaseExtensions::DateTimeFunc(sqlite3_context* context, int argc, sqlite
 		if(sqlite3_value_type(argv[0]) == SQLITE_NULL) return sqlite3_result_null(context);
 
 		// The SQLite database handle should have been set as the user data for
-		// this function, which we can then map back into a zDBConnection object
+		// this function, which we can then map back into a SqliteConnection object
 
 		hDatabase = reinterpret_cast<sqlite3*>(sqlite3_user_data(context));
-		conn = zDBConnection::FindConnection(hDatabase);
-		if(static_cast<zDBConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
+		conn = SqliteConnection::FindConnection(hDatabase);
+		if(static_cast<SqliteConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
 
 		value = ValueToDateTime(argv[0]);		// Convert the value into a DateTime
 
@@ -280,23 +280,23 @@ void DatabaseExtensions::DateTimeFunc(sqlite3_context* context, int argc, sqlite
 
 		switch(conn->DateTimeFormat) {
 
-			case zDBDateTimeFormat::ISO8601:
+			case SqliteDateTimeFormat::ISO8601:
 				return sqlite3_result_text(context, AutoAnsiString(value.ToString("yyyy-mm-dd HH:mm:ss")), 
 					-1, SQLITE_TRANSIENT);
 
-			case zDBDateTimeFormat::Sortable:
+			case SqliteDateTimeFormat::Sortable:
 				return sqlite3_result_text(context, AutoAnsiString(value.ToString("s", DateTimeFormatInfo::InvariantInfo)), 
 					-1, SQLITE_TRANSIENT);
 
-			case zDBDateTimeFormat::UniversalSortable:
+			case SqliteDateTimeFormat::UniversalSortable:
 				return sqlite3_result_text(context, AutoAnsiString(value.ToString("u", DateTimeFormatInfo::InvariantInfo)), 
 					-1, SQLITE_TRANSIENT);
 
-			case zDBDateTimeFormat::RFC1123:
+			case SqliteDateTimeFormat::RFC1123:
 				return sqlite3_result_text(context, AutoAnsiString(value.ToString("r", DateTimeFormatInfo::InvariantInfo)), 
 					-1, SQLITE_TRANSIENT);
 
-			case zDBDateTimeFormat::Ticks:
+			case SqliteDateTimeFormat::Ticks:
 				return sqlite3_result_int64(context, value.Ticks);
 		}
 	}
@@ -442,7 +442,7 @@ void DatabaseExtensions::DecompressFunc(sqlite3_context* context, int argc, sqli
 void DatabaseExtensions::DecryptFunc(sqlite3_context* context, int argc, sqlite3_value** argv)
 {
 	sqlite3*					hDatabase;			// Parent SQLite database handle
-	gcroot<zDBConnection^>		conn;				// Parent zDBConnection object
+	gcroot<SqliteConnection^>		conn;				// Parent SqliteConnection object
 	PENCRYPTION_HEADER			pHeader;			// Encryption header
 	DWORD						cbBuffer;			// Allocated buffer size
 	unsigned char*				rgBuffer;			// Decryption buffer
@@ -454,11 +454,11 @@ void DatabaseExtensions::DecryptFunc(sqlite3_context* context, int argc, sqlite3
 		if(sqlite3_value_type(argv[0]) == SQLITE_NULL) return sqlite3_result_null(context);
 
 		// The SQLite database handle should have been set as the user data for
-		// this function, which we can then map back into a zDBConnection object
+		// this function, which we can then map back into a SqliteConnection object
 
 		hDatabase = reinterpret_cast<sqlite3*>(sqlite3_user_data(context));
-		conn = zDBConnection::FindConnection(hDatabase);
-		if(static_cast<zDBConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
+		conn = SqliteConnection::FindConnection(hDatabase);
+		if(static_cast<SqliteConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
 
 		// Anything compressed by ENCRYPT() will be of type SQLITE_BLOB and
 		// will be at least big enough to hold the ENCRYPTION_HEADER struct
@@ -557,7 +557,7 @@ void DatabaseExtensions::DecryptFunc(sqlite3_context* context, int argc, sqlite3
 void DatabaseExtensions::EncryptFunc(sqlite3_context* context, int argc, sqlite3_value** argv)
 {
 	sqlite3*					hDatabase;			// Parent SQLite database handle
-	gcroot<zDBConnection^>		conn;				// Parent zDBConnection object
+	gcroot<SqliteConnection^>		conn;				// Parent SqliteConnection object
 	DWORD						cbRequired;			// Required buffer space
 	PENCRYPTION_HEADER			pHeader;			// Encryption header
 	DWORD						cbBuffer;			// Allocated buffer size
@@ -570,11 +570,11 @@ void DatabaseExtensions::EncryptFunc(sqlite3_context* context, int argc, sqlite3
 		if(sqlite3_value_type(argv[0]) == SQLITE_NULL) return sqlite3_result_null(context);
 
 		// The SQLite database handle should have been set as the user data for
-		// this function, which we can then map back into a zDBConnection object
+		// this function, which we can then map back into a SqliteConnection object
 
 		hDatabase = reinterpret_cast<sqlite3*>(sqlite3_user_data(context));
-		conn = zDBConnection::FindConnection(hDatabase);
-		if(static_cast<zDBConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
+		conn = SqliteConnection::FindConnection(hDatabase);
+		if(static_cast<SqliteConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
 
 		// The first step is to ask CryptoAPI to tell us how much buffer space
 		// we're going to need to actually encrypt something of [arg] bytes big
@@ -674,7 +674,7 @@ void DatabaseExtensions::ExtensionInit(sqlite3* hDatabase, char** ppszErrorMessa
 void DatabaseExtensions::GuidFunc(sqlite3_context* context, int argc, sqlite3_value** argv)
 {
 	sqlite3*					hDatabase;		// Parent SQLite database handle
-	gcroot<zDBConnection^>		conn;			// Parent zDBConnection object
+	gcroot<SqliteConnection^>		conn;			// Parent SqliteConnection object
 	Guid						value;			// Coerced Guid value
 	array<System::Byte>^		rgValue;		// Value as a byte array
 	PinnedBytePtr				pinValue;		// Pinned value buffer
@@ -686,11 +686,11 @@ void DatabaseExtensions::GuidFunc(sqlite3_context* context, int argc, sqlite3_va
 		if(sqlite3_value_type(argv[0]) == SQLITE_NULL) return sqlite3_result_null(context);
 
 		// The SQLite database handle should have been set as the user data for
-		// this function, which we can then map back into a zDBConnection object
+		// this function, which we can then map back into a SqliteConnection object
 
 		hDatabase = reinterpret_cast<sqlite3*>(sqlite3_user_data(context));
-		conn = zDBConnection::FindConnection(hDatabase);
-		if(static_cast<zDBConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
+		conn = SqliteConnection::FindConnection(hDatabase);
+		if(static_cast<SqliteConnection^>(conn) == nullptr) throw gcnew Exception("Invalid database handle");
 
 		value = ValueToGuid(argv[0]);		// Convert the value into a Guid
 
@@ -699,21 +699,21 @@ void DatabaseExtensions::GuidFunc(sqlite3_context* context, int argc, sqlite3_va
 
 		switch(conn->GuidFormat) {
 
-			case zDBGuidFormat::Binary:
+			case SqliteGuidFormat::Binary:
 				rgValue = value.ToByteArray();
 				pinValue = &rgValue[0];
 				return sqlite3_result_blob(context, pinValue, rgValue->Length, SQLITE_TRANSIENT);
 
-			case zDBGuidFormat::HexString:
+			case SqliteGuidFormat::HexString:
 				return sqlite3_result_text(context, AutoAnsiString(value.ToString("N")), -1, SQLITE_TRANSIENT);
 
-			case zDBGuidFormat::Hyphenated:
+			case SqliteGuidFormat::Hyphenated:
 				return sqlite3_result_text(context, AutoAnsiString(value.ToString("D")), -1, SQLITE_TRANSIENT);
 
-			case zDBGuidFormat::Bracketed:
+			case SqliteGuidFormat::Bracketed:
 				return sqlite3_result_text(context, AutoAnsiString(value.ToString("B")), -1, SQLITE_TRANSIENT);
 
-			case zDBGuidFormat::Parenthetic:
+			case SqliteGuidFormat::Parenthetic:
 				return sqlite3_result_text(context, AutoAnsiString(value.ToString("P")), -1, SQLITE_TRANSIENT);
 		}
 	}
@@ -725,7 +725,7 @@ void DatabaseExtensions::GuidFunc(sqlite3_context* context, int argc, sqlite3_va
 // DatabaseExtensions::Register (static)
 //
 // Registers the extensions with SQLite.  Only necessary to call this once
-// per process -- see zDBConnection's static constructor
+// per process -- see SqliteConnection's static constructor
 //
 // Arguments:
 //
@@ -736,7 +736,7 @@ void DatabaseExtensions::Register(void)
 	// TODO: FIX ME
 	//
 	//int nResult = sqlite3_auto_extension(ExtensionInit);
-	//if(nResult != SQLITE_OK) throw gcnew zDBException(nResult);
+	//if(nResult != SQLITE_OK) throw gcnew SqliteException(nResult);
 }
 
 //---------------------------------------------------------------------------

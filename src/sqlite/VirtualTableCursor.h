@@ -24,7 +24,7 @@
 #define __VIRTUALTABLECURSOR_H_
 #pragma once
 
-#include "zDBVirtualTableCursor.h"		// Include zDBVirtualTableCursor decls
+#include "SqliteVirtualTableCursor.h"		// Include SqliteVirtualTableCursor decls
 
 using namespace System;
 using namespace System::Diagnostics;
@@ -37,8 +37,8 @@ using namespace zuki::data::sqlite;
 //
 // VirtualTableCursor extends the standard sqlite3_vtab_cursor structure 
 // into a full blown (unmanaged) class object.  This extension adds a pointer 
-// to the GCHandle of the managed zDBVirtualTableCursor, and provides overloads 
-// so it can be treated as if it were a managed zDBVirtualTableBase.  Handy.
+// to the GCHandle of the managed SqliteVirtualTableCursor, and provides overloads 
+// so it can be treated as if it were a managed SqliteVirtualTableBase.  Handy.
 //---------------------------------------------------------------------------
 
 class VirtualTableCursor : public sqlite3_vtab_cursor
@@ -50,16 +50,16 @@ public:
 
 	// Instance
 	operator Object^() const { return GCHandle::FromIntPtr(IntPtr(m_ptr)).Target; }
-	operator zDBVirtualTableCursor^() const { return static_cast<zDBVirtualTableCursor^>(GCHandle::FromIntPtr(IntPtr(m_ptr)).Target); }
+	operator SqliteVirtualTableCursor^() const { return static_cast<SqliteVirtualTableCursor^>(GCHandle::FromIntPtr(IntPtr(m_ptr)).Target); }
 	
 	// Pointer-To-Member
-	zDBVirtualTableCursor^ operator ->() const { return operator zDBVirtualTableCursor^(); }
+	SqliteVirtualTableCursor^ operator ->() const { return operator SqliteVirtualTableCursor^(); }
 
 	// Equality
-	bool operator ==(zDBVirtualTableCursor^ rhs) { return (operator zDBVirtualTableCursor^() == rhs); }
+	bool operator ==(SqliteVirtualTableCursor^ rhs) { return (operator SqliteVirtualTableCursor^() == rhs); }
 
 	// Inequality
-	bool operator !=(zDBVirtualTableCursor^ rhs) { return (operator zDBVirtualTableCursor^() != rhs); }
+	bool operator !=(SqliteVirtualTableCursor^ rhs) { return (operator SqliteVirtualTableCursor^() != rhs); }
 
 	//-----------------------------------------------------------------------
 	// Member Functions

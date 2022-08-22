@@ -39,7 +39,7 @@ DatabaseHandle::DatabaseHandle(Object^ caller, sqlite3* hDatabase) :
 {
 	if(!hDatabase) throw gcnew ArgumentNullException();	// Cannot be NULL
 
-#ifdef ZDB_TRACE_HANDLEREF
+#ifdef SQLITE_TRACE_HANDLEREF
 	Debug::WriteLine(String::Format("DatabaseHandle 0x{0:X} ---> 1 (NEW via {1})", 
 		IntPtr(this), caller->GetType()->Name));
 #endif
@@ -51,9 +51,9 @@ DatabaseHandle::DatabaseHandle(Object^ caller, sqlite3* hDatabase) :
 DatabaseHandle::~DatabaseHandle()
 {
 	int nResult = sqlite3_close(m_hDatabase);
-	if(nResult != SQLITE_OK) {} /* TODO (REMOVED): throw gcnew zDBException(m_hDatabase, nResult); */
+	if(nResult != SQLITE_OK) {} /* TODO (REMOVED): throw gcnew SqliteException(m_hDatabase, nResult); */
 
-#ifdef ZDB_TRACE_HANDLEREF
+#ifdef SQLITE_TRACE_HANDLEREF
 	Debug::WriteLine(String::Format("DatabaseHandle 0x{0:X} destroyed.", 
 		IntPtr(this)));
 #endif
@@ -72,7 +72,7 @@ void DatabaseHandle::AddRef(Object^ caller)
 {
 	InterlockedIncrement(&m_cRefCount);		// Increment reference count
 
-#ifdef ZDB_TRACE_HANDLEREF
+#ifdef SQLITE_TRACE_HANDLEREF
 	Debug::WriteLine(String::Format("DatabaseHandle 0x{0:X} ---> {1} ({2})", 
 		IntPtr(this), m_cRefCount, 
 		(caller != nullptr) ? caller->GetType()->Name : "StatementHandle"));
@@ -90,7 +90,7 @@ void DatabaseHandle::AddRef(Object^ caller)
 
 void DatabaseHandle::Release(Object^ caller)
 {
-#ifdef ZDB_TRACE_HANDLEREF
+#ifdef SQLITE_TRACE_HANDLEREF
 	Debug::WriteLine(String::Format("DatabaseHandle 0x{0:X} <--- {1} ({2})", 
 		IntPtr(this), m_cRefCount - 1, 
 		(caller != nullptr) ? caller->GetType()->Name : "StatementHandle"));
