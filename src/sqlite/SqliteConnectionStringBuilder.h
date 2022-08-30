@@ -24,11 +24,11 @@
 #define __SQLITECONNECTIONSTRINGBUILDER_H_
 #pragma once
 
-#include "SqliteConstants.h"				// Include Sqlite constant declarations
-#include "SqliteEnumerations.h"			// Include Sqlite enumeration declarations
-#include "SqliteUtil.h"					// Include SqliteUtil declarations
+#include "SqliteConstants.h"
+#include "SqliteEnumerations.h"
+#include "SqliteUtil.h"
 
-#pragma warning(push, 4)				// Enable maximum compiler warnings
+#pragma warning(push, 4)
 
 using namespace System;
 using namespace System::Collections;

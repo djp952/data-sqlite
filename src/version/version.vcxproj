@@ -74,10 +74,10 @@
   <ItemGroup>
     <CustomBuild Include="version.ini">
       <FileType>Text</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(ProjectDir)..\..\depends\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)..\..\tmp\version" "-ini:%(FullPath)" -format:cpp,rc,txt</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)..\..\tmp\version\version.cpp;$(ProjectDir)..\..\tmp\version\version.rc;$(ProjectDir)..\..\tmp\version\version.txt;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(ProjectDir)..\..\depends\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)..\..\tmp\version" "-ini:%(FullPath)" -format:cpp,rc,txt</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)..\..\tmp\version\version.cpp;$(ProjectDir)..\..\tmp\version\version.rc;$(ProjectDir)..\..\tmp\version\version.txt;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(ProjectDir)..\..\depends\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)..\..\tmp\version" "-ini:%(FullPath)" -format:cs,cpp,rc,txt</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)..\..\tmp\version\version.cs;$(ProjectDir)..\..\tmp\version\version.cpp;$(ProjectDir)..\..\tmp\version\version.rc;$(ProjectDir)..\..\tmp\version\version.txt;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(ProjectDir)..\..\depends\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)..\..\tmp\version" "-ini:%(FullPath)" -format:cs,cpp,rc,txt</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)..\..\tmp\version\version.cs;$(ProjectDir)..\..\tmp\version\version.cpp;$(ProjectDir)..\..\tmp\version\version.rc;$(ProjectDir)..\..\tmp\version\version.txt;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating version files</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating version files</Message>
     </CustomBuild>
