@@ -20,15 +20,16 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#include "stdafx.h"					// Include project pre-compiled headers
-#include "SqliteConnection.h"			// Include SqliteConnection declarations
-#include "SqliteCommand.h"				// Include SqliteCommand declarations
-#include "SqliteDataReader.h"			// Include SqliteDataReader declarations
-#include "SqliteMetaData.h"			// Include SqliteMetaData declarations
-#include "SqliteTransaction.h"			// Include SqliteTransaction declarations
+#include "stdafx.h"
 
-#pragma warning(push, 4)			// Enable maximum compiler warnings
-#pragma warning(disable:4100)		// "unreferenced formal parameter"
+#include "SqliteConnection.h"
+#include "SqliteCommand.h"
+#include "SqliteDataReader.h"
+#include "SqliteMetaData.h"
+#include "SqliteTransaction.h"
+
+#pragma warning(push, 4)
+#pragma warning(disable:4100)
 
 namespace zuki::data::sqlite {
 
@@ -902,20 +903,26 @@ void SqliteConnection::LoadConfiguredPragmas(void)
 	Debug::Assert(m_state == ConnectionState::Open);
 
 	// PRAGMA AUTO_VACUUM
+	m_autoVacuum = false;
 	result = SqliteUtil::ExecuteScalar(m_pDatabase->Handle, "PRAGMA AUTO_VACUUM");
-	m_autoVacuum = (Convert::ToInt32(result) == 1);
+	if(!String::IsNullOrEmpty(result)) m_autoVacuum = (Convert::ToInt32(result) == 1);
 
 	// PRAGMA LEGACY_FILE_FORMAT
+	//
+	// TODO: This pragma is obsolete and has been removed
+	m_compatibleFormat = false;
 	result = SqliteUtil::ExecuteScalar(m_pDatabase->Handle, "PRAGMA LEGACY_FILE_FORMAT");
-	m_compatibleFormat = (Convert::ToInt32(result) == 1);
+	if(!String::IsNullOrEmpty(result)) m_compatibleFormat = (Convert::ToInt32(result) == 1);
 
 	// PRAGMA ENCODING
+	m_encoding = SqliteTextEncodingMode::UTF8;
 	result = SqliteUtil::ExecuteScalar(m_pDatabase->Handle, "PRAGMA ENCODING");
-	m_encoding = SqliteUtil::PragmaToEncoding(result);
+	if(!String::IsNullOrEmpty(result)) m_encoding = SqliteUtil::PragmaToEncoding(result);
 
 	// PRAGMA PAGE_SIZE
+	m_pageSize = 1024;				// TODO: As of SQLITE 3.12.0, this is now 4096, this code is still based on 3.3.8
 	result = SqliteUtil::ExecuteScalar(m_pDatabase->Handle, "PRAGMA PAGE_SIZE");
-	m_pageSize = Convert::ToInt32(result);
+	if(!String::IsNullOrEmpty(result)) m_pageSize = Convert::ToInt32(result);
 }
 
 //---------------------------------------------------------------------------
@@ -966,7 +973,8 @@ void SqliteConnection::Open(void)
 	// codes, at least in the Windows build.  There is no reason to enable this until
 	// they are used.  SqliteException will need to change as well to accomodate it
 
-	ENGINE_ISSUE(3.3.8, "Extended result codes are seemingly unused in the engine");
+	// TODO: Resolve this
+	//ENGINE_ISSUE(3.3.8, "Extended result codes are seemingly unused in the engine");
 	//sqlite3_extended_result_codes(hDatabase, 1);
 
 	// Set the provided connection string's ALLOW EXTENSIONS property, which dictates

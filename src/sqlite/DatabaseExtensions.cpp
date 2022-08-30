@@ -20,11 +20,11 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#include "stdafx.h"					// Include project pre-compiled headers
-#include "DatabaseExtensions.h"		// Include DatabaseExtensions declarations
-#include "SqliteConnection.h"			// Include SqliteConnection declarations
+#include "stdafx.h"
+#include "DatabaseExtensions.h"
+#include "SqliteConnection.h"
 
-#pragma warning(push, 4)			// Enable maximum compiler warnings
+#pragma warning(push, 4)
 
 //---------------------------------------------------------------------------
 // DatabaseExtensions::BoolFunc (private, static)
@@ -40,7 +40,7 @@
 void DatabaseExtensions::BoolFunc(sqlite3_context* context, int argc, sqlite3_value** argv)
 {
 	sqlite3*					hDatabase;		// Parent SQLite database handle
-	gcroot<SqliteConnection^>		conn;			// Parent SqliteConnection object
+	gcroot<SqliteConnection^>	conn;			// Parent SqliteConnection object
 	bool						value;			// Coerced boolean value
 
 	Debug::Assert(argc == 1);

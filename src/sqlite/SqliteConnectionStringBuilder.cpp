@@ -175,10 +175,7 @@ void SqliteConnectionStringBuilder::DataSource::set(String^ value)
 	if(!SqliteUtil::ValidateDataSource(value))
 		throw gcnew FormatException(String::Format("'{0}' is not a valid Data Source", value));
 
-	// Another problem I've found is that the :memory: data source is case-sensitive.
-	// This probably isn't a bug per-se, but I don't see why it needs to be this way.
-
-	ENGINE_ISSUE(3.3.8, ":memory: data source name is case-sensitive");
+	// The ":memory:" data source is case-sensitive, convert as necessary to to the proper value
 	if(String::Compare(value, SqliteDataSource::Memory, true) == 0) value = SqliteDataSource::Memory;
 	
 	DbConnectionStringBuilder::default[s_keywords[static_cast<int>(KeywordCode::DataSource)]] = value;

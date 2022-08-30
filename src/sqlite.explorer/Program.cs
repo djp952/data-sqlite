@@ -22,6 +22,7 @@
 
 using System;
 using System.Windows.Forms;
+using zuki.data.sqlite;
 
 namespace zuki.data.sqlite.explorer
 {
@@ -33,6 +34,16 @@ namespace zuki.data.sqlite.explorer
 		[STAThread]
 		static void Main()
 		{
+			///
+			/// DUMMY - TODO REMOVE
+			///
+
+			using(SqliteConnection conn = new SqliteConnection())
+			{
+				conn.ConnectionString = "Data Source=:memory:";
+				conn.Open();
+			}
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm());
